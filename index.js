@@ -17,9 +17,7 @@ import { postCreateValidation } from "./validations/post.js";
 import multer from "multer";
 import handleVError from "./utils/handleVError.js";
 const port = process.env.PORT || 4444;
-const mongodbUrl =
-  process.env.MONGODB_URL ||
-  "mongodb+srv://meridaura:123@cluster0.nyhea5n.mongodb.net/?retryWrites=true&w=majority";
+const mongodbUrl = "mongodb+srv://meridaura:123@cluster0.nyhea5n.mongodb.net/?retryWrites=true&w=majority";
 const app = express();
 app.listen(port, (err) => {
   if (err) {
