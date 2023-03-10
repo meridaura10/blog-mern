@@ -18,7 +18,8 @@ import multer from "multer";
 import handleVError from "./utils/handleVError.js";
 const port = process.env.PORT || 4444;
 const mongodbUrl =
-  "mongodb+srv://meridaura:123@cluster0.czxq2ec.mongodb.net/blog?retryWrites=true&w=majority";
+  process.env.MONGODB_URL ||
+  "mongodb+srv://meridaura:123@cluster0.nyhea5n.mongodb.net/?retryWrites=true&w=majority";
 const app = express();
 app.listen(port, (err) => {
   if (err) {
@@ -52,15 +53,7 @@ mongoose
 app.use(cors());
 
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.json({
-    url: process.env.MONGODB_URL,
-    post: process.env.PORT,
-    db: mongoose.Error
-  });
-});
 app.use("/uploads", express.static("uploads"));
-app.get("/test", (req, res) => res.json("data to connitcl okkkkkk"));
 app.post("/auth/login", loginValidator, handleVError, login);
 app.post("/auth/register", registerValidator, handleVError, register);
 app.get("/auth/me", checkAuth, getMe);
